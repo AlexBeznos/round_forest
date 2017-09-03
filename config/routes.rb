@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  resources :books, only: %i[index]
+  resources :articles, only: %i[index]
+  resources :books,    only: %i[index]
 end

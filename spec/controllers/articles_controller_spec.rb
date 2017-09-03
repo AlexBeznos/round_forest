@@ -1,23 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe BooksController, type: :controller do
+RSpec.describe ArticlesController, type: :controller do
   include_context 'controller'
 
   describe '#index' do
-    context 'with books' do
+    context 'with articles' do
       before do
-        create_list :book, 3
+        create_list :article, 3
         get :index
       end
 
       it { expect(status).to eq 200 }
 
-      it 'returns all books' do
+      it 'returns all articles' do
         expect(data.count).to eq 3
       end
     end
 
-    context 'without books' do
+    context 'without articles' do
       before { get :index }
 
       it { expect(status).to eq 200 }
