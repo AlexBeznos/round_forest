@@ -7,7 +7,7 @@ try {
 
   node {
     docker.image('postgres').withRun('--name postgres-${jobId}') { postgresContainer ->
-      docker.image('ruby:2.3.4').inside("--link=${postgresContainer.id}:postgres") {
+      docker.image('ruby:2.3.4-jessie').inside("--link=${postgresContainer.id}:postgres") {
         stage('Checkout the source code') {
           checkout scm
         }
