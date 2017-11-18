@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 try {
   def jobId = "${env.JOB_NAME.replaceAll('/','-')}_${env.BUILD_NUMBER}"
 
-  node('docker') {
+  node {
     docker.image('postgres').withRun('--name postgres-${jobId}') { postgresContainer ->
       docker.image('ruby:2.3.4').inside("--link=${postgresContainer.id}:postgres") {
         stage('Checkout the source code') {
